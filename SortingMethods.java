@@ -3,11 +3,35 @@ import java.lang.*;
 public class SortingMethods {
 
     public static void main(String[] args) {
-        int[] arr = {100,500,3,88,89,900,1000,567};
-        bubbleSort(arr);
+        int[] arr = {
+            100,
+            500,
+            3,
+            88,
+            89,
+            900,
+            1000,
+            567
+        };
+
+        int[] arrBubSort = bubbleSort(arr);
+        int[] arrSelSort = selectionSort(arr);
+		
+		System.out.println("Bubble Sort Output");
+		
+		for (int i = 0; i < arrBubSort.length; i++)
+            System.out.println(arrBubSort[i]);
+		
+		System.out.println("\n");
+		
+		System.out.println("Selection Sort Output");
+		
+		for (int i = 0; i < arrSelSort.length; i++)
+            System.out.println(arrSelSort[i]);
+
     }
 
-    public static void bubbleSort(int[] arr) {
+    public static int[] bubbleSort(int[] arr) {
 
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -19,7 +43,26 @@ public class SortingMethods {
 
             }
         }
-        for (int i = 0; i < arr.length; i++)
-            System.out.println(arr[i]);
+		return arr;
+    }
+
+    public static int[] selectionSort(int[] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+            int indexMin = i;
+            int min = arr[i];
+            for (int j = i; j < arr.length; j++) {
+
+                if (min > arr[j]) {
+                    min = arr[j];
+                    indexMin = j;
+                }
+            }
+            int temp = arr[indexMin];
+            arr[indexMin] = arr[i];
+            arr[i] = temp;
+        }
+		return arr;
+
     }
 }
